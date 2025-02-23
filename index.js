@@ -5,7 +5,7 @@ const app = express();
 const rotas = require('./routes/notificacaoRota');
 const PORT = process.env.PORT || 3001;
 
-// nada
+// nada e agora eh publico
 app.use(express.json());
 app.use('/api', rotas);
 app.get('/', (req, res) => {
