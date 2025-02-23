@@ -36,4 +36,9 @@ const enviarpush = async (req, res) => {
   }
 };
 
+
+const testarendpoint = async(req, res) => {
+  res.status(200).send("Tudo OK")
+}
+
 module.exports = { enviarpush };
