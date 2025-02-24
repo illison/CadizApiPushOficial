@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv').config();
 
 const app = express();
 const rotas = require('./routes/notificacaoRota');
 const PORT = process.env.PORT || 3001;
+
+console.log(`Projecto ${process.env.PROJECTID}`);
 
 // nada e agora eh publico
 app.use(express.json());
