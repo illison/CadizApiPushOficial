@@ -67,6 +67,7 @@ const GOOGLE_APPLICATION_CREDENTIALS = JSON.parse(
   Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS, 'base64').toString('utf-8')
 );
 
+// Teste
 try {
   admin.initializeApp({
   //     credential: admin.credential.cert({
