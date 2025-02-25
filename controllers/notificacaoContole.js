@@ -1,17 +1,28 @@
 const { response } = require("express");
 const admin = require("../firebaseConfig");
 
+
 const testarendpoint = async (req, res) => {
-  res.status(200).send("Tudo OK");
+  const tt = admin.getServiceAccount();
+  res.status(200).send({mesagem: tt});
 };
+
 
 const enviarpush2 = async (req, res) => {
 
   const { token, title, body, data } = req.body;
 
+  console.log(" -- pegando o enviarpush2 1")
+
+  //const accessToken = await admin.getAccessToken();
+
+  console.log(" -- pegando o enviarpush2 2")
+
   if (!token) {
     return res.status(400).send({ message: "Missing device token." });
   }
+
+  //res.status(200).send({accessToken});
 
   const messageX = {
     token: token,
@@ -22,7 +33,10 @@ const enviarpush2 = async (req, res) => {
     data: data,
   };
 
-  // res.status(200).send({messageX});
+
+  // await axios.post(`https://fcm.googleapis.com/v1/projects/cadizmobk/messages:send`, payload, config);
+
+  
   
   // Send a message to the device corresponding to the provided registration token.
   admin.messagingx.send(messageX).then((response) => {
@@ -34,6 +48,8 @@ const enviarpush2 = async (req, res) => {
       console.log('Error sending message:', error);
       res.status(200).send({mensagem: "Error sending message:",messageId: error,});
     });
+
+
 }
 
 module.exports = { enviarpush2, testarendpoint };
