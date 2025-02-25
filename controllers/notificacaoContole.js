@@ -1,5 +1,13 @@
 const { response } = require("express");
 const admin = require("../firebaseConfig");
+const meutoken = "eR0oq5GRRWyarOtZ0XXtcr:APA91bFZtK0NtYzaZpU-tB7WblL2RD7iD77ekbWeFxJQduOgJrW8dJN6PQ_sfRaEivBQaSDBTg65ClBnVBvAIq5WRWUqe2NqLw7UhWTxASUpId20kCpv5V8"
+
+
+
+const testarendpoint = async (req, res) => {
+  res.status(200).send("Tudo OK");
+};
+
 
 
 const enviarpush2 = async (req, res) => {
