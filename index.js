@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config();
 
 const app = express();
 const rotas = require('./routes/notificacaoRota');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 console.log(`Projecto ${process.env.PROJECTID}`);
 

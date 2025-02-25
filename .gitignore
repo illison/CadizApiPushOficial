@@ -130,3 +130,5 @@ dist
 .pnp.*
 .vercel
 fcmContaAtual2.json
+google-services.json
+minhasChaves.json

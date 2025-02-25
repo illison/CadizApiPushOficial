@@ -2,30 +2,30 @@ const admin = require("firebase-admin");
 // const serviceAccount = require("./fcmContaAtual2.json");
 
 
-function getServiceAccount() {
-  try {
-    // Get the service account key from the environment variable
-    const serviceAccountString = process.env.FIREBASE_SERVICE_ACCOUNT;
+// function getServiceAccount() {
+//   try {
+//     // Get the service account key from the environment variable
+//     const serviceAccountString = process.env.FIREBASE_SERVICE_ACCOUNT;
 
-    if (!serviceAccountString) {
-      console.error("FIREBASE_SERVICE_ACCOUNT environment variable not found.");
-      return null;
-    }
+//     if (!serviceAccountString) {
+//       console.error("FIREBASE_SERVICE_ACCOUNT environment variable not found.");
+//       return null;
+//     }
 
-    // Parse the JSON string into a JavaScript object
-    const serviceAccount = JSON.parse(serviceAccountString);
-    return serviceAccount;
-  } catch (error) {
-    console.error("Error parsing FIREBASE_SERVICE_ACCOUNT:", error);
-    return null;
-  }
-}
+//     // Parse the JSON string into a JavaScript object
+//     const serviceAccount = JSON.parse(serviceAccountString);
+//     return serviceAccount;
+//   } catch (error) {
+//     console.error("Error parsing FIREBASE_SERVICE_ACCOUNT:", error);
+//     return null;
+//   }
+// }
 
-const serviceAccount = getServiceAccount();
+// const serviceAccount = getServiceAccount();
 
 try {
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.applicationDefault(),
   });
 
 } catch (error) {
