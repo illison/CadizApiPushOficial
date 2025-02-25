@@ -1,14 +1,9 @@
 const { response } = require("express");
 const admin = require("../firebaseConfig");
-const meutoken = "eR0oq5GRRWyarOtZ0XXtcr:APA91bFZtK0NtYzaZpU-tB7WblL2RD7iD77ekbWeFxJQduOgJrW8dJN6PQ_sfRaEivBQaSDBTg65ClBnVBvAIq5WRWUqe2NqLw7UhWTxASUpId20kCpv5V8"
-
-
 
 const testarendpoint = async (req, res) => {
   res.status(200).send("Tudo OK");
 };
-
-
 
 const enviarpush2 = async (req, res) => {
 
@@ -27,18 +22,18 @@ const enviarpush2 = async (req, res) => {
     data: data,
   };
 
-  //res.status(200).send({messageX});
+  res.status(200).send({messageX});
   
-  // Send a message to the device corresponding to the provided registration token.
-  admin.messagingx.send(message).then((response) => {
-      // Response is a message ID string.
-      res.status(200).send({message: "Notificacao enviada com sucesso",messageId: response,});
-      console.log('Successfully sent message:', response);
-    })
-    .catch((error) => {
-      console.log('Error sending message:', error);
-      res.status(200).send({message: "Error sending message:",messageId: error,});
-    });
+  // // Send a message to the device corresponding to the provided registration token.
+  // admin.messagingx.send(message).then((response) => {
+  //     // Response is a message ID string.
+  //     res.status(200).send({message: "Notificacao enviada com sucesso",messageId: response,});
+  //     console.log('Successfully sent message:', response);
+  //   })
+  //   .catch((error) => {
+  //     console.log('Error sending message:', error);
+  //     res.status(200).send({message: "Error sending message:",messageId: error,});
+  //   });
 }
 
 module.exports = { enviarpush2, testarendpoint };
