@@ -1,4 +1,4 @@
-const ioredis = require("../config/ioredis");
+const ioredis = require("../config/ioredisConfig");
 const HASH_KEY_CONFIG_BACKUP = 'config:backup:dfexml';
 
 

@@ -1,4 +1,4 @@
-const Valkey = require("ioredis");
+const Redis = require("ioredis");
 
 const valkeyPassword = process.env.VALKEY_PASSWORD;
 const valkeyHost = process.env.VALKEY_HOST;
@@ -15,9 +15,8 @@ if (!valkeyPassword || !valkeyHost || !valkeyPort) {
 
 const serviceUri = `rediss://${valkeyUser}:${valkeyPassword}@${valkeyHost}:${valkeyPort}`;
 
-//const valkey = new valkey(serviceUri);
 
-const valkey = new Valkey(serviceUri, {
+const valkey = new Redis(serviceUri, {
     tls: {}, // Para conexões SSL
     maxRetriesPerRequest: 3, // Tentar até 3 vezes se um comando falhar
     enableReadyCheck: true, // Garante que o cliente está pronto antes de enviar comandos

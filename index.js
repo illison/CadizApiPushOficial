@@ -9,12 +9,6 @@ const PORT = process.env.PORT || 3000;
 
 console.log(`Projecto ${process.env.PROJECTID}`);
 
-const {
-  setBackupConfig,
-  getBackupConfig,
-  disconnectRedis,
-} = require("./controllers/notificacaoConfig"); // Importa do nosso módulo
-
 // nada e agora eh publico
 app.use(express.json());
 app.use("/api", rotas);
