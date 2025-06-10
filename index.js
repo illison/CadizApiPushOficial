@@ -4,14 +4,14 @@ const mysql = require("mysql");
 const dotenv = require("dotenv").config();
 
 const app = express();
-const rotas = require("./routes/notificacaoRota");
+const rotasPush = require("./routes/push.Rotas");
+const rotasIOT = require("./routes/iot.Rotas");
 const PORT = process.env.PORT || 3000;
-
-console.log(`Projecto ${process.env.PROJECTID}`);
 
 // nada e agora eh publico
 app.use(express.json());
-app.use("/api", rotas);
+app.use("/api/push", rotasPush);
+app.use("/api/iot", rotasIOT);
 app.get("/", (req, res) => {
   res.send("Funcionanndo");
 });
