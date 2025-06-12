@@ -7,6 +7,36 @@ require("dotenv").config();
 const meuId =
   "cTi2qykKSEer7-_1p_iRzG:APA91bFEGVFuTuK0J5xxEduR-noB_pAgloXDJ6wiIL2In-80EwVI0PMmDGLyRUN2CrlSRWQTQ7wis1rWW1flao2qfmzlA42-bvs8FQTyBjwEZksUaOEqYr9GraNf9hg9Nd9iUyhMEW9W";
 
+
+//   exports.logModuloTanque = (req, res) => {
+//   let query =
+//     "SELECT DATE_FORMAT(sync, '%d/%m/%Y %H:%i:%S') as last_sync, device, detectado, modulo from arduino WHERE modulo <> 'prt' ORDER BY sync DESC LIMIT 12";
+
+//   sql.query(query, (err, data) => {
+//     if (err) {
+//       res.status(500).json({ erro: true, mensagem: err.message });
+//     } else {
+//       res.status(200).json({ resultados: data });
+//     }
+//   });
+// };
+
+
+const mensagemRetorno = async (req, res) => {
+  let query =
+    "SELECT rede, modulo, valor, mensagem, DATE_FORMAT(last_sync, '%d/%m/%Y %H:%i:%S') as datahora FROM cadizhomed";
+
+  sql.query(query, (err, data) => {
+    if (err) {
+      res.status(500).json({ erro: true, mensagem: err.message });
+    } else {
+      //res.status(200).send(data);
+      res.status(200).json({ resultados: data });
+    }
+  });
+};  
+
+
 const gravarInteracao = async (req, res) => {
   var jsondata = req.body;
   var values = [];
@@ -77,4 +107,4 @@ const gravarInteracao = async (req, res) => {
   );
 };
 
-module.exports = { gravarInteracao };
+module.exports = { gravarInteracao, mensagemRetorno };
